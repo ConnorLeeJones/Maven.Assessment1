@@ -1,20 +1,40 @@
 package com.zipcodewilmington.assessment1.part3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by leon on 2/16/18.
  */
 public class PetOwner {
+    String name;
+    Pet[] pets = new Pet[0];
+
+
     /**
      * @param name name of the owner of the Pet
      * @param pets array of Pet object
      */
     public PetOwner(String name, Pet... pets) {
+        this.name = name;
+        this.pets = pets;
     }
 
     /**
      * @param pet pet to be added to the composite collection of Pets
      */
     public void addPet(Pet pet) {
+
+        List<Pet> petList = new ArrayList<>(0);
+
+        if (!(pets == null)){
+            petList = Arrays.asList(getPets());
+        }
+
+        petList.add(pet);
+        pets = petList.toArray(new Pet[petList.size()]);
+
     }
 
     /**
@@ -22,6 +42,14 @@ public class PetOwner {
      */
     public void removePet(Pet pet) {
 
+        List<Pet> petList = new ArrayList<>(0);
+
+        if (!(pets == null)){
+            petList = Arrays.asList(getPets());
+        }
+
+        petList.remove(pet);
+        pets = petList.toArray(new Pet[petList.size()]);
     }
 
     /**
@@ -29,14 +57,27 @@ public class PetOwner {
      * @return true if I own this pet
      */
     public Boolean isOwnerOf(Pet pet) {
-        return null;
+        Boolean result = false;
+        for (Pet element : pets){
+            if (element.equals(pet)){
+                result = true;
+            }
+        }
+        return result;
     }
 
     /**
      * @return the age of the Pet object whose age field is the lowest amongst all Pets in this class
      */
     public Integer getYoungetPetAge() {
-        return null;
+        Integer youngest = pets[0].age;
+
+        for (Pet pet : pets){
+            if (pet.age < youngest){
+                youngest = pet.age;
+            }
+        }
+        return youngest;
     }
 
 
@@ -46,7 +87,14 @@ public class PetOwner {
      * @return the age of the Pet object whose age field is the highest amongst all Pets in this class
      */
     public Integer getOldestPetAge() {
-        return null;
+        Integer oldest = pets[0].age;
+
+        for (Pet pet : pets){
+            if (pet.age > oldest){
+                oldest = pet.age;
+            }
+        }
+        return oldest;
     }
 
 
@@ -54,27 +102,32 @@ public class PetOwner {
      * @return the sum of ages of Pet objects stored in this class divided by the number of Pet object
      */
     public Float getAveragePetAge() {
-        return null;
+        int ageTotal = 0;
+        for (Pet pet : pets){
+            ageTotal += pet.age;
+        }
+        float result = (float) ageTotal / pets.length;
+        return result;
     }
 
     /**
      * @return the number of Pet objects stored in this class
      */
     public Integer getNumberOfPets() {
-        return null;
+        return pets.length;
     }
 
     /**
      * @return the name property of the Pet
      */
     public String getName() {
-        return null;
+        return name;
     }
 
     /**
      * @return array representation of animals owned by this PetOwner
      */
     public Pet[] getPets() {
-        return null;
+        return pets;
     }
 }

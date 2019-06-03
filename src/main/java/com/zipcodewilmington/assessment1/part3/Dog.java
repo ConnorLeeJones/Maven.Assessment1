@@ -19,6 +19,7 @@ public class Dog extends Pet {
      */
     public Dog(Integer age) {
         this.age = age;
+        this.name = "Dog name";
     }
 
     /**
@@ -38,6 +39,7 @@ public class Dog extends Pet {
     public Dog() {
         this.name = "Dog name";
         this.age = 0;
+        this.owner = null;
     }
 
     /**

@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class PetOwner {
     String name;
-    Pet[] pets = new Pet[0];
+    Pet[] pets;
 
 
     /**
@@ -19,6 +19,7 @@ public class PetOwner {
     public PetOwner(String name, Pet... pets) {
         this.name = name;
         this.pets = pets;
+
     }
 
     /**
@@ -41,14 +42,11 @@ public class PetOwner {
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
+        ArrayList<Pet> petList = new ArrayList<>(Arrays.asList(pets));
 
-        List<Pet> petList = new ArrayList<>(0);
+        int index = petList.indexOf(pet);
+        petList.set(index, null);
 
-        if (!(pets == null)){
-            petList = Arrays.asList(getPets());
-        }
-
-        petList.remove(pet);
         pets = petList.toArray(new Pet[petList.size()]);
     }
 

@@ -11,7 +11,8 @@ public class StringUtils {
      * given a string containing words delimited by spaces, representative of a sentence, return an array of strings, each element representative of a respective word in the sentence
      */
     public static String[] getWords(String sentence) {
-        return null;
+        String[] sentenceArray = sentence.split(" ");
+        return sentenceArray;
     }
 
 
@@ -21,7 +22,8 @@ public class StringUtils {
      * given a string containing words delimited by spaces, representative of a sentence, return the first word of the sentence
      */
     public static String getFirstWord(String sentence) {
-        return null;
+        String[] sentenceArray = sentence.split(" ");
+        return sentenceArray[0];
     }
 
     /**
@@ -30,7 +32,9 @@ public class StringUtils {
      * given a string containing words delimited by spaces, representative of a sentence, return the first word with identical contents in reverse order
      */
     public static String reverseFirstWord(String sentence) {
-        return null;
+        String firstWord = StringUtils.getFirstWord(sentence);
+        StringBuilder builder = new StringBuilder(firstWord);
+        return builder.reverse().toString();
     }
 
     /**
@@ -39,7 +43,10 @@ public class StringUtils {
      * given a string containing words delimited by spaces, representative of a sentence, return the first word with identical contents in reverse order with the first character capitalized
      */
     public static String reverseFirstWordThenCamelCase(String sentence) {
-        return null;
+        String firstWord = StringUtils.reverseFirstWord(sentence);
+        String firstLetter = firstWord.substring(0, 1).toUpperCase();
+
+        return firstLetter + firstWord.substring(1);
     }
 
 
@@ -50,7 +57,7 @@ public class StringUtils {
      * given a string and index, return an identical string excluding the character at the specified index
      */
     public static String removeCharacterAtIndex(String str, int index) {
-        return null;
+        return str.substring(0, index) + str.substring(index +1 );
     }
 
 }

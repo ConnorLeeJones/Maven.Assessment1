@@ -17,7 +17,6 @@ public abstract class Pet implements Animal {
     public Pet() {
         this.name = "";
         this.age = 0;
-        this.owner = null;
     }
 
     /**

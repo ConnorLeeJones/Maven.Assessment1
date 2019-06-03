@@ -39,14 +39,12 @@ public class Dog extends Pet {
     public Dog() {
         this.name = "Dog name";
         this.age = 0;
-        this.owner = null;
     }
 
     /**
      * @return bark as a string
      */
     public String speak() {
-
         return "Bark";
     }
 }
